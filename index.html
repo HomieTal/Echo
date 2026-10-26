@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#e9edec">
+  <title>Echo OS — plug and play, built for AI on OS</title>
+  <meta name="description" content="Echo OS is a plug-and-play Arch-based operating system: boot the live USB on any x86_64 machine and install offline in minutes. Aira, the AI-on-OS layer, is in development.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/img/favicon.svg">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="preload" href="assets/fonts/space-grotesk-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/ibm-plex-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Echo OS — plug and play, built for AI on OS">
+  <meta property="og:description" content="Boot the live USB, install offline in minutes. Aira, the AI-on-OS layer, is in development.">
+  <meta property="og:site_name" content="Echo OS">
+  <meta property="og:image" content="assets/img/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Echo OS">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Echo OS — plug and play, built for AI on OS">
+  <meta name="twitter:description" content="Boot the live USB, install offline in minutes. Aira, the AI-on-OS layer, is in development.">
+  <meta name="twitter:image" content="assets/img/og.png">
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ============================== fixed top: countdown + nav -->
+  <div class="site-top">
+  <!-- countdown bar -->
+  <div class="countdown" role="region" aria-label="Next release countdown">
+    <p class="countdown__inner">
+      <span class="countdown__label">preview-2026.11-target/</span>
+      <span class="countdown__clock" data-countdown aria-label="Time until the next release target">
+        <span data-cd="days">--</span><i>:</i><span data-cd="hours">--</span><i>:</i><span data-cd="minutes">--</span><i>:</i><span data-cd="seconds">--</span>
+      </span>
+    </p>
+  </div>
+
+  <!-- ============================== navigation -->
+  <header class="nav" data-nav>
+    <div class="nav__inner">
+      <a class="nav__brand" href="#top" aria-label="Echo OS home">
+        <img src="assets/img/echo-mark.svg" width="30" height="30" alt="">
+        <span class="nav__wordmark">echo<b>os</b></span>
+      </a>
+
+      <nav class="nav__links" aria-label="Primary">
+        <a href="get-started.html">Get started</a>
+        <a href="#components">Components</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#proof">Proof</a>
+        <a href="#receipts">Status</a>
+      </nav>
+
+      <div class="nav__actions">
+        <a class="nav__source" href="https://github.com/HomieTal/EchoOS-DEV" rel="noopener" target="_blank">
+          Source
+          <svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg>
+        </a>
+        <a class="nav__cta" href="#get-the-iso">
+          Download ISO
+          <svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg>
+        </a>
+        <button class="nav__menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu" data-menu-toggle>
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu" hidden data-mobile-menu>
+    <nav aria-label="Mobile">
+      <a href="get-started.html"><span>01</span>Get started</a>
+      <a href="#components"><span>02</span>Components</a>
+      <a href="#roadmap"><span>03</span>Roadmap</a>
+      <a href="#proof"><span>04</span>Proof</a>
+      <a href="#receipts"><span>05</span>Status</a>
+      <a href="#get-the-iso"><span>06</span>Get the ISO</a>
+      <a href="https://github.com/HomieTal/EchoOS-DEV" rel="noopener" target="_blank"><span>07</span>Source on GitHub</a>
+    </nav>
+    <div class="mobile-menu__foot">
+      <a class="cta cta--primary" href="#get-the-iso">Download the preview ISO</a>
+    </div>
+  </div>
+
+  <main id="main">
+
+    <!-- ============================== hero -->
+    <section class="hero" id="top" aria-labelledby="hero-statement">
+      <h1 class="hero__wordmark" translate="no" aria-label="echo os">
+        <span class="hero__type" data-type-text>echo</span><span class="hero__apo" aria-hidden="true" data-type-mark>&rsquo;</span><span class="hero__type" data-type-text>os</span><span class="cursor hero__cursor" aria-hidden="true"></span>
+      </h1>
+
+      <div class="hero__grid" role="group" aria-label="Echo OS summary">
+        <div class="hero__cell hero__cell--statement">
+          <p class="mono-meta">
+            <span>preview 2026.10 / plug and play</span>
+            <span class="mono-meta__right">ai on os / built in the open</span>
+          </p>
+          <p class="hero__statement" id="hero-statement">Plug in.<br>Boot.<br>Go.</p>
+        </div>
+        <div class="hero__cell hero__cell--pitch">
+          <p class="hero__pitch">Echo OS is a plug-and-play operating system: write the ISO to a USB stick, boot any x86_64 machine into a full desktop, and install offline in minutes &mdash; nothing on your disk is touched until you say so. It is built to carry <a href="#receipts">Aira, the AI-on-OS layer<sup>*</sup></a>, as a first-class system layer: in development, and never shipped quietly.</p>
+          <a class="cta cta--primary cta--wide" href="#get-the-iso">
+            Download the preview ISO &bull; Free
+            <svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- interactive boot sequence (original, CSS/JS only) -->
+      <div class="hero__stage">
+        <div class="boot" data-boot>
+          <div class="boot__screen" aria-hidden="true">
+            <div class="boot__grid"></div>
+            <ol class="boot__lines" data-boot-lines></ol>
+            <div class="boot__desktop" data-boot-desktop>
+              <span class="boot__bar"><i></i><i></i><i></i></span>
+              <span class="boot__win"><b>xfce &middot; live session</b><em>installer ready when you are</em></span>
+            </div>
+            <div class="boot__shots" data-boot-shots aria-hidden="true">
+              <figure class="boot__shot">
+                <img src="assets/screenshots/boot-menu.png" alt="" width="919" height="647" loading="lazy">
+                <figcaption><span>boot-menu/</span><span>stock arch menu &middot; vm</span></figcaption>
+              </figure>
+              <figure class="boot__shot">
+                <img src="assets/screenshots/live-login.png" alt="" width="1281" height="784" loading="lazy">
+                <figcaption><span>live-login/</span><span>lightdm &middot; live session</span></figcaption>
+              </figure>
+            </div>
+            <span class="boot__badge" data-boot-badge>idle/</span>
+          </div>
+        </div>
+        <div class="hero__stage-strip">
+          <p class="hero__stage-label">boot_echo_while_you_wait/ <span class="cursor" aria-hidden="true"></span></p>
+          <div class="hero__stage-hud">
+            <span class="mono-meta__right" data-boot-hud>stage 0/5</span>
+            <button class="btn-square" type="button" data-boot-play>Play</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== ticker — colored segments, mono label, arrows -->
+    <div class="ticker" id="ticker" role="region" aria-label="Project status ticker">
+      <p class="visually-hidden">The preview ISO is free. Boot the live USB on any x86_64 machine.</p>
+      <div class="ticker__viewport" aria-hidden="true">
+        <div class="ticker__group" data-ticker>
+          <span class="ticker__item"><span class="ticker__label">The preview ISO is free. Boot the live USB on any x86_64 machine.<svg class="ticker__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></span></span>
+          <span class="ticker__item"><span class="ticker__label">The preview ISO is free. Boot the live USB on any x86_64 machine.<svg class="ticker__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></span></span>
+          <span class="ticker__item"><span class="ticker__label">The preview ISO is free. Boot the live USB on any x86_64 machine.<svg class="ticker__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></span></span>
+          <span class="ticker__item"><span class="ticker__label">The preview ISO is free. Boot the live USB on any x86_64 machine.<svg class="ticker__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></span></span>
+          <span class="ticker__item"><span class="ticker__label">The preview ISO is free. Boot the live USB on any x86_64 machine.<svg class="ticker__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></span></span>
+        </div>
+        <div class="ticker__group" data-ticker>
+          <span class="ticker__item"><span class="ticker__label">The preview ISO is free. Boot the live USB on any x86_64 machine.<svg class="ticker__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></span></span>
+          <span class="ticker__item"><span class="ticker__label">The preview ISO is free. Boot the live USB on any x86_64 machine.<svg class="ticker__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></span></span>
+          <span class="ticker__item"><span class="ticker__label">The preview ISO is free. Boot the live USB on any x86_64 machine.<svg class="ticker__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></span></span>
+          <span class="ticker__item"><span class="ticker__label">The preview ISO is free. Boot the live USB on any x86_64 machine.<svg class="ticker__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></span></span>
+          <span class="ticker__item"><span class="ticker__label">The preview ISO is free. Boot the live USB on any x86_64 machine.<svg class="ticker__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></span></span>
+        </div>
+      </div>
+      <button class="ticker__toggle" type="button" aria-label="Pause ticker animation" data-ticker-toggle>
+        <svg class="icon icon--pause" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3v10M11 3v10"/></svg>
+        <svg class="icon icon--play" viewBox="0 0 16 16" aria-hidden="true"><path d="m5 3 8 5-8 5V3Z"/></svg>
+      </button>
+    </div>
+
+    <!-- ============================== river -->
+    <section class="river" id="river" aria-labelledby="river-title">
+      <div class="river__intro">
+        <h2 class="river__title" id="river-title">Echo is where intelligence becomes part of the OS</h2>
+      </div>
+
+      <article class="river__row river__row--start" aria-labelledby="river-boot">
+        <div class="river__copy">
+          <h3 class="river__label" id="river-boot" translate="no">echo.boot()</h3>
+          <p>Own the first signal. Boot entries, initramfs, and live boot assets live in one component &mdash; BIOS and UEFI paths stay explicit instead of hiding inside a monolithic profile.</p>
+          <a class="text-link" href="https://github.com/HomieTal/EchoOS-DEV/tree/main/components/echo-boot" rel="noopener" target="_blank">Read the boot component <svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></a>
+        </div>
+        <div class="river__visual">
+          <img class="river__img" src="assets/screenshots/boot-menu.png" alt="Echo OS boot menu (stock Arch Linux ISO menu) captured in VMware" width="919" height="647" loading="lazy">
+          <span class="art__caption">.boot-entries/ vm capture</span>
+        </div>
+      </article>
+
+      <article class="river__row river__row--end" aria-labelledby="river-core">
+        <div class="river__copy">
+          <h3 class="river__label" id="river-core" translate="no">echo.core()</h3>
+          <p>The body of the system: the Arch base, the XFCE live session, and the live/target boundary. KDE Plasma is on the roadmap &mdash; it is not in the box today.</p>
+          <a class="text-link" href="https://github.com/HomieTal/EchoOS-DEV/tree/main/components/echo-core" rel="noopener" target="_blank">Explore echo-core <svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></a>
+        </div>
+        <div class="river__visual">
+          <img class="river__img" src="assets/screenshots/live-login.png" alt="Echo OS live session LightDM login screen with the live user preselected" width="1281" height="784" loading="lazy">
+          <span class="art__caption">.live-login/ lightdm</span>
+        </div>
+      </article>
+
+      <article class="river__row river__row--start" aria-labelledby="river-install">
+        <div class="river__copy">
+          <h3 class="river__label" id="river-install" translate="no">echo.install()</h3>
+          <p>The handoff. Calamares copies the live system straight to the target disk &mdash; entirely offline. No mirrors, no network setup, no hidden download step.</p>
+          <a class="text-link" href="https://github.com/HomieTal/EchoOS-DEV/tree/main/components/echo-install" rel="noopener" target="_blank">Read the install component <svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></a>
+        </div>
+        <div class="river__visual" role="img" aria-label="Diagram: disk blocks being filled by the offline installer">
+          <div class="art art--install" aria-hidden="true">
+            <div class="art__disk">
+              <i class="is-done"></i><i class="is-done"></i><i class="is-done"></i><i class="is-done"></i><i class="is-done"></i><i class="is-live"></i><i></i><i></i>
+            </div>
+            <span class="art__caption">.offline-copy/ squashfs &rarr; disk</span>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- ============================== get the iso (passes) -->
+    <section class="passes" id="get-the-iso" aria-labelledby="passes-title">
+      <div class="passes__head">
+        <p class="mono-meta">
+          <span>published release / 1.70 GiB iso</span>
+          <span class="mono-meta__right"><span class="dot-accent" aria-hidden="true"></span> free &amp; public</span>
+        </p>
+        <h2 class="section-display" id="passes-title" translate="no">get-the-iso/</h2>
+        <div class="tabs" role="tablist" aria-label="Download options">
+          <button class="tab is-active" id="tab-iso" type="button" role="tab" aria-selected="true" aria-controls="panel-iso" data-tab="iso">iso/</button>
+          <button class="tab" id="tab-source" type="button" role="tab" aria-selected="false" aria-controls="panel-source" data-tab="source">source/</button>
+        </div>
+      </div>
+
+      <div class="passes__panel" id="panel-iso" role="tabpanel" aria-labelledby="tab-iso">
+        <div class="passes__cards">
+          <article class="pass-card">
+            <h3 class="pass-card__title" translate="no">download/</h3>
+            <p class="pass-card__desc">Grab the published release from GitHub. Boot it live, install offline, and verify the checksum before you write it to disk.</p>
+            <p class="pass-card__price">free</p>
+            <a class="cta cta--primary cta--wide" href="https://github.com/HomieTal/EchoOS-DEV/releases/download/v2026.10.24/archlinux-2026.10.24-x86_64.iso" rel="noopener" target="_blank">
+              Download ISO
+              <svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg>
+            </a>
+            <details class="pass-card__included" open>
+              <summary><h4>What&rsquo;s included</h4></summary>
+              <ol class="included-list">
+                <li><i>1</i>XFCE live session with autologin</li>
+                <li><i>2</i>Calamares 3.4.2 offline full-disk install</li>
+                <li><i>3</i>BIOS + UEFI live boot</li>
+                <li><i>4</i>~4 minute install, verified in VMware (BIOS)</li>
+                <li><i>5</i>SHA-256 published in the release notes</li>
+              </ol>
+            </details>
+            <p class="pass-card__meta"><code>archlinux-2026.10.24-x86_64.iso</code> &middot; 1.70 GiB &middot; published 2026-10-24 &middot; <a href="get-started.html">plug-and-play guide</a></p>
+          </article>
+
+          <article class="pass-card">
+            <h3 class="pass-card__title" translate="no">verify/</h3>
+            <p class="pass-card__desc">Trust, then boot. The checksum below matches the published release asset &mdash; confirm your download before it touches a disk.</p>
+            <p class="pass-card__price">built-in</p>
+            <button class="cta cta--ghost cta--wide" type="button" data-copy-target="sha256">
+              Copy the SHA-256 checksum
+              <svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 5V3h8v8h-2M3 5h8v8H3z"/></svg>
+            </button>
+            <details class="pass-card__included" open>
+              <summary><h4>What&rsquo;s included</h4></summary>
+              <ol class="included-list">
+                <li><i>1</i><span>Checksum <code class="sha-inline" id="sha256">388f7a45ec91da248144313e94822142331a43dd429329be70829f5ef9c47d85</code></span></li>
+                <li><i>2</i><span>Verify command: <code>sha256sum archlinux-2026.10.24-x86_64.iso</code></span></li>
+                <li><i>3</i><span><a href="https://github.com/HomieTal/EchoOS-DEV/releases/tag/v2026.10.24" rel="noopener" target="_blank">Release notes</a> with the published digest</span></li>
+                <li><i>4</i><span><a href="https://github.com/HomieTal/EchoOS-DEV/releases/tag/v2026.10.24" rel="noopener" target="_blank">Preview notes</a> and known issues</span></li>
+              </ol>
+            </details>
+            <p class="pass-card__meta">Known issues are listed, not hidden: leftover live accounts and an uninitialized pacman keyring are documented in the release notes.</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="passes__panel" id="panel-source" role="tabpanel" aria-labelledby="tab-source" hidden>
+        <div class="passes__cards">
+          <article class="pass-card">
+            <h3 class="pass-card__title" translate="no">build/</h3>
+            <p class="pass-card__desc">Assemble the ISO yourself on an Arch host. The profile, components, and build script are all in the repository.</p>
+            <p class="pass-card__price">open</p>
+            <a class="cta cta--ghost cta--wide" href="https://github.com/HomieTal/EchoOS-DEV" rel="noopener" target="_blank">
+              Open the repository
+              <svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg>
+            </a>
+            <details class="pass-card__included" open>
+              <summary><h4>What&rsquo;s included</h4></summary>
+              <ol class="included-list">
+                <li><i>1</i>ArchISO 91 build profile</li>
+                <li><i>2</i>echo-boot / echo-core / echo-install components</li>
+                <li><i>3</i><span><code>./build.sh</code> assembly and validation</span></li>
+                <li><i>4</i>Requires <code>archiso</code>, <code>base-devel</code>, <code>squashfs-tools</code></li>
+              </ol>
+            </details>
+            <p class="pass-card__meta"><code>git clone https://github.com/HomieTal/EchoOS-DEV.git &amp;&amp; cd EchoOS-DEV &amp;&amp; ./build.sh</code> &middot; <a href="get-started.html">full walkthrough</a></p>
+          </article>
+
+          <article class="pass-card">
+            <h3 class="pass-card__title" translate="no">docs/</h3>
+            <p class="pass-card__desc">Every decision is written down. Read the architecture reports, check the component maps, or argue with us in the issue tracker.</p>
+            <p class="pass-card__price">public</p>
+            <a class="cta cta--ghost cta--wide" href="https://github.com/HomieTal/EchoOS-DEV/tree/main/docs" rel="noopener" target="_blank">
+              Browse the documentation
+              <svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg>
+            </a>
+            <details class="pass-card__included" open>
+              <summary><h4>What&rsquo;s included</h4></summary>
+              <ol class="included-list">
+                <li><i>1</i>Phase-1 architecture report</li>
+                <li><i>2</i>Component maps and parity checks</li>
+                <li><i>3</i>Build and validation notes</li>
+                <li><i>4</i><a href="https://github.com/HomieTal/EchoOS-DEV/issues" rel="noopener" target="_blank">Issue tracker</a> for bugs and rough edges</li>
+              </ol>
+            </details>
+            <p class="pass-card__meta">No license file is published yet. Source is viewable today; redistribution waits for a license.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== components (speakers) -->
+    <section class="components" id="components" aria-labelledby="components-title">
+      <div class="components__head">
+        <h2 class="section-display" id="components-title" translate="no">the-components/</h2>
+        <p class="components__aside">Eight pieces make up the project. Four are shipped in the preview, one is planned, and one of them is you.</p>
+      </div>
+      <ul class="components__grid">
+        <li class="comp-tile">
+          <button class="comp-tile__hit" type="button" data-comp="echo-boot" aria-haspopup="dialog">
+            <span class="comp-tile__art" aria-hidden="true"><i class="pat pat--boot"></i><b>01</b></span>
+            <span class="comp-tile__cap">echo-boot, first signal</span>
+          </button>
+        </li>
+        <li class="comp-tile">
+          <button class="comp-tile__hit" type="button" data-comp="echo-core" aria-haspopup="dialog">
+            <span class="comp-tile__art" aria-hidden="true"><i class="pat pat--core"></i><b>02</b></span>
+            <span class="comp-tile__cap">echo-core, the body</span>
+          </button>
+        </li>
+        <li class="comp-tile">
+          <button class="comp-tile__hit" type="button" data-comp="echo-install" aria-haspopup="dialog">
+            <span class="comp-tile__art" aria-hidden="true"><i class="pat pat--install"></i><b>03</b></span>
+            <span class="comp-tile__cap">echo-install, the handoff</span>
+          </button>
+        </li>
+        <li class="comp-tile comp-tile--planned">
+          <button class="comp-tile__hit" type="button" data-comp="aira" aria-haspopup="dialog">
+            <span class="comp-tile__art" aria-hidden="true"><i class="pat pat--aira"></i><b>04</b></span>
+            <span class="comp-tile__cap">aira, planned &middot; not shipped</span>
+          </button>
+        </li>
+        <li class="comp-tile">
+          <button class="comp-tile__hit" type="button" data-comp="profile" aria-haspopup="dialog">
+            <span class="comp-tile__art" aria-hidden="true"><i class="pat pat--profile"></i><b>05</b></span>
+            <span class="comp-tile__cap">profile, active archiso</span>
+          </button>
+        </li>
+        <li class="comp-tile">
+          <button class="comp-tile__hit" type="button" data-comp="build" aria-haspopup="dialog">
+            <span class="comp-tile__art" aria-hidden="true"><i class="pat pat--build"></i><b>06</b></span>
+            <span class="comp-tile__cap">build, assembly scripts</span>
+          </button>
+        </li>
+        <li class="comp-tile">
+          <button class="comp-tile__hit" type="button" data-comp="docs" aria-haspopup="dialog">
+            <span class="comp-tile__art" aria-hidden="true"><i class="pat pat--docs"></i><b>07</b></span>
+            <span class="comp-tile__cap">docs, decisions &amp; reports</span>
+          </button>
+        </li>
+        <li class="comp-tile">
+          <button class="comp-tile__hit" type="button" data-comp="you" aria-haspopup="dialog">
+            <span class="comp-tile__art" aria-hidden="true"><i class="pat pat--you"></i><b>08</b></span>
+            <span class="comp-tile__cap">you, bugs welcome</span>
+          </button>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ============================== contributors -->
+    <section class="contributors" id="contributors" aria-labelledby="contributors-title">
+      <div class="components__head">
+        <h2 class="section-display" id="contributors-title" translate="no">featured-contributors/</h2>
+        <p class="components__aside">The people building Echo in the open &mdash; and the seats still open. Contributor data comes from the public repository.</p>
+      </div>
+      <ul class="components__grid">
+        <li class="comp-tile">
+          <a class="contrib-tile" href="https://github.com/HomieTal" rel="noopener" target="_blank">
+            <span class="contrib-tile__photo"><img src="assets/img/contributors/homietal.png" alt="HomieTal's GitHub avatar" width="460" height="460" loading="lazy"></span>
+            <span class="comp-tile__cap">HomieTal, project owner</span>
+          </a>
+        </li>
+        <li class="comp-tile">
+          <a class="contrib-tile" href="https://github.com/HomieTal/EchoOS-DEV/issues" rel="noopener" target="_blank">
+            <span class="contrib-tile__photo" aria-hidden="true"><i class="pat pat--you"></i><b>02</b></span>
+            <span class="comp-tile__cap">you, first contribution</span>
+          </a>
+        </li>
+        <li class="comp-tile">
+          <a class="contrib-tile" href="https://github.com/HomieTal/EchoOS-DEV/issues" rel="noopener" target="_blank">
+            <span class="contrib-tile__photo" aria-hidden="true"><i class="pat pat--build"></i><b>03</b></span>
+            <span class="comp-tile__cap">you, bugs &amp; tests</span>
+          </a>
+        </li>
+        <li class="comp-tile">
+          <a class="contrib-tile" href="https://github.com/HomieTal/EchoOS-DEV/tree/main/docs" rel="noopener" target="_blank">
+            <span class="contrib-tile__photo" aria-hidden="true"><i class="pat pat--docs"></i><b>04</b></span>
+            <span class="comp-tile__cap">you, docs &amp; guides</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ============================== roadmap (agenda) -->
+    <section class="roadmap" id="roadmap" aria-labelledby="roadmap-title">
+      <div class="roadmap__side">
+        <h2 class="section-display" id="roadmap-title" translate="no">roadmap/</h2>
+        <a class="btn-square btn-square--lg" href="https://github.com/HomieTal/EchoOS-DEV/releases" rel="noopener" target="_blank">
+          See all releases
+          <svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg>
+        </a>
+        <p class="roadmap__note">Dates are targets, not promises. The repository is the source of truth.</p>
+      </div>
+
+      <div class="roadmap__days">
+        <article class="day day--done">
+          <h3 class="day__label" translate="no">2026.10_done</h3>
+          <ol class="day__list">
+            <li><span class="day__time">10.24</span><p class="day__title">Public preview ISO</p><p class="day__desc">1.70 GiB x86_64 live/install image on GitHub Releases.</p></li>
+            <li><span class="day__time">10.24</span><p class="day__title">XFCE live session</p><p class="day__desc">Autologin to a complete desktop, no install required.</p></li>
+            <li><span class="day__time">10.24</span><p class="day__title">Offline install</p><p class="day__desc">Calamares copies the live system to disk with zero network calls.</p></li>
+            <li><span class="day__time">10.24</span><p class="day__title">End-to-end verification</p><p class="day__desc">Live boot, install, and reboot to LightDM confirmed in VMware (BIOS).</p></li>
+          </ol>
+        </article>
+
+        <article class="day day--next">
+          <h3 class="day__label" translate="no">2026.11_next</h3>
+          <ol class="day__list">
+            <li><span class="day__time">target</span><p class="day__title">Modular assembly</p><p class="day__desc">Components assemble the profile instead of mirroring it.</p></li>
+            <li><span class="day__time">target</span><p class="day__title">Echo branding</p><p class="day__desc">Boot and installer identity replaces the stock art.</p></li>
+            <li><span class="day__time">target</span><p class="day__title">Keyring fix</p><p class="day__desc">Installed systems ship with an initialized pacman keyring.</p></li>
+            <li><span class="day__time">target</span><p class="day__title">Second public release</p><p class="day__desc">Next monthly preview, checksum and notes included.</p></li>
+          </ol>
+        </article>
+
+        <article class="day day--later">
+          <h3 class="day__label" translate="no">2027.01_later</h3>
+          <ol class="day__list">
+            <li><span class="day__time">planned</span><p class="day__title">KDE Plasma desktop</p><p class="day__desc">The current preview ships XFCE; Plasma is the target desktop.</p></li>
+            <li><span class="day__time">planned</span><p class="day__title">Installer polish</p><p class="day__desc">Calamares branding pass and partitioning refinements.</p></li>
+            <li><span class="day__time">planned</span><p class="day__title">License</p><p class="day__desc">A published license unlocks redistribution.</p></li>
+          </ol>
+        </article>
+
+        <article class="day day--aira">
+          <h3 class="day__label" translate="no">tbd_aira</h3>
+          <ol class="day__list">
+            <li><span class="day__time">now</span><p class="day__title">Direction</p><p class="day__desc">Local-first, consent-first, inspectable. The boundaries come first.</p></li>
+            <li><span class="day__time">next</span><p class="day__title">Core integration</p><p class="day__desc">Aira hooks into echo-core, not into a browser tab.</p></li>
+            <li><span class="day__time">later</span><p class="day__title">Preview</p><p class="day__desc">Nothing ships until it can be inspected and turned off.</p></li>
+          </ol>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================== receipts (testimonials) -->
+    <section class="receipts" id="receipts" aria-labelledby="receipts-title">
+      <p class="receipts__kicker"><span id="receipts-title" translate="no">trust-but-verify/</span> <span class="cursor" aria-hidden="true"></span></p>
+
+      <div class="receipts__stage" data-receipts aria-live="polite">
+        <blockquote class="receipt is-active">
+          <p class="receipt__prefix" translate="no">verified:</p>
+          <p class="receipt__text">End-to-end in VMware Workstation 26 (BIOS): live boot, installer launch, full-disk install, reboot to LightDM.</p>
+        </blockquote>
+        <blockquote class="receipt">
+          <p class="receipt__prefix" translate="no">published:</p>
+          <p class="receipt__text">The SHA-256 of the release asset is public. 388f7a45&hellip;9c47d85 &mdash; check your download before you boot it.</p>
+        </blockquote>
+        <blockquote class="receipt">
+          <p class="receipt__prefix" translate="no">open:</p>
+          <p class="receipt__text">No license file yet. The source is viewable today; redistribution rights wait until a license lands.</p>
+        </blockquote>
+        <blockquote class="receipt">
+          <p class="receipt__prefix" translate="no">planned:</p>
+          <p class="receipt__text">Aira is a direction, not a capability. The current ISO contains no AI features &mdash; we will say so the day that changes.</p>
+        </blockquote>
+      </div>
+
+      <div class="receipts__nav">
+        <span class="receipts__count" data-receipt-count>1 / 4</span>
+        <div class="receipts__buttons">
+          <button class="btn-square" type="button" data-receipt-prev aria-label="Previous status">
+            <svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M13 8H4M8.5 3.5 4 8l4.5 4.5"/></svg>
+          </button>
+          <button class="btn-square" type="button" data-receipt-next aria-label="Next status">
+            <svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== proof (videos) -->
+    <section class="proof" id="proof" aria-labelledby="proof-title">
+      <div class="proof__head">
+        <div>
+          <h2 class="section-display" id="proof-title" translate="no">see-it-run/</h2>
+          <p class="proof__sub">Genuine captures from the public ISO replace these frames as they are made. Nothing on this page is mocked up.</p>
+        </div>
+        <a class="btn-square btn-square--lg" href="https://github.com/HomieTal/EchoOS-DEV/releases/tag/v2026.10.24" rel="noopener" target="_blank">
+          Get the ISO first
+          <svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v8M4.5 6.5 8 10l3.5-3.5M3 13h10"/></svg>
+        </a>
+      </div>
+
+      <div class="proof__layout">
+        <div class="proof__feature">
+          <figure class="shot is-active" data-shot data-shot-name="live-session">
+            <img class="shot__img" src="assets/screenshots/live-login.png" alt="Echo OS live session LightDM login screen with the live user preselected" width="1281" height="784" loading="lazy">
+            <div class="shot__fallback">
+              <div class="art art--boot art--fill" aria-hidden="true">
+                <div class="art__bootlist">
+                  <span><b>live session</b><u>xfce &middot; autologin</u></span>
+                  <span><b>session</b><u>lightdm + xfwm4</u></span>
+                  <span><b>installer</b><u>calamares launcher</u></span>
+                  <span><b>capture</b><u>pending, from the iso</u></span>
+                </div>
+                <span class="art__caption">.live-session/</span>
+              </div>
+            </div>
+            <figcaption><span>live-session/</span><span class="shot__meta">LightDM login &middot; 2026.10</span></figcaption>
+          </figure>
+
+          <figure class="shot" data-shot data-shot-name="installer">
+            <img class="shot__img" src="assets/screenshots/installer.webp" alt="Calamares installer running on Echo OS" width="1600" height="1000" loading="lazy">
+            <div class="shot__fallback">
+              <div class="art art--install art--fill" aria-hidden="true">
+                <div class="art__disk art__disk--tall">
+                  <i class="is-done"></i><i class="is-done"></i><i class="is-live"></i><i></i><i></i><i></i>
+                </div>
+                <span class="art__caption">.installer/ calamares 3.4.2</span>
+              </div>
+            </div>
+            <figcaption><span>installer/</span><span class="shot__meta">Calamares &middot; offline</span></figcaption>
+          </figure>
+
+          <figure class="shot" data-shot data-shot-name="boot">
+            <img class="shot__img" src="assets/screenshots/boot-menu.png" alt="Echo OS boot menu (stock Arch Linux ISO menu) captured in VMware" width="919" height="647" loading="lazy">
+            <div class="shot__fallback">
+              <div class="art art--boot art--fill" aria-hidden="true">
+                <div class="art__bootlist">
+                  <span><b>echo os</b><u>live &middot; default</u></span>
+                  <span><b>echo os</b><u>accessibility</u></span>
+                  <span><b>firmware</b><u>bios + uefi</u></span>
+                  <span><b>capture</b><u>pending, from the iso</u></span>
+                </div>
+                <span class="art__caption">.boot-menu/</span>
+              </div>
+            </div>
+            <figcaption><span>boot/</span><span class="shot__meta">stock menu &middot; vm capture</span></figcaption>
+          </figure>
+        </div>
+
+        <div class="proof__playlist" role="group" aria-label="Capture playlist">
+          <button class="playlist-item is-active" type="button" aria-pressed="true" data-playlist="live-session">
+            <span class="playlist-item__poster art--mini-boot" aria-hidden="true"></span>
+            <span class="playlist-item__body">
+              <b>live-login.png</b>
+              <em data-playlist-meta>1281&times;784 &middot; captured</em>
+            </span>
+            <svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="m5 3 8 5-8 5V3Z"/></svg>
+          </button>
+          <button class="playlist-item" type="button" aria-pressed="false" data-playlist="installer">
+            <span class="playlist-item__poster art--mini-install" aria-hidden="true"></span>
+            <span class="playlist-item__body">
+              <b>installer.webp</b>
+              <em data-playlist-meta>1600&times;1000 &middot; pending capture</em>
+            </span>
+            <svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="m5 3 8 5-8 5V3Z"/></svg>
+          </button>
+          <button class="playlist-item" type="button" aria-pressed="false" data-playlist="boot">
+            <span class="playlist-item__poster art--mini-boot2" aria-hidden="true"></span>
+            <span class="playlist-item__body">
+              <b>boot-menu.png</b>
+              <em data-playlist-meta>919&times;647 &middot; captured</em>
+            </span>
+            <svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="m5 3 8 5-8 5V3Z"/></svg>
+          </button>
+          <p class="proof__playlist-note">Capture checklist and framing rules live in <code>assets/screenshots/README.md</code>.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================== footer -->
+  <footer class="footer">
+    <div class="footer__brandrow">
+      <p class="footer__wordmark" translate="no"><span>echo</span><span class="footer__apo" aria-hidden="true">&rsquo;</span><b>os</b></p>
+    </div>
+    <div class="footer__bar">
+      <p>&copy; 2026 Echo OS</p>
+      <nav aria-label="Footer">
+        <a href="get-started.html">Get started</a>
+        <a href="https://github.com/HomieTal/EchoOS-DEV" rel="noopener" target="_blank">Source</a>
+        <a href="https://github.com/HomieTal/EchoOS-DEV/tree/main/docs" rel="noopener" target="_blank">Docs</a>
+        <a href="https://github.com/HomieTal/EchoOS-DEV/releases" rel="noopener" target="_blank">Releases</a>
+        <a href="#top">Back to top</a>
+      </nav>
+      <a class="footer__gh" href="https://github.com/HomieTal/EchoOS-DEV" rel="noopener" target="_blank" aria-label="Echo OS on GitHub">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .8a11.4 11.4 0 0 0-3.6 22.2c.6.1.8-.2.8-.5v-2.2c-3.3.7-4-1.4-4-1.4-.5-1.4-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.9 1.2 1.9 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.3 11.3 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.6.8.5A11.4 11.4 0 0 0 12 .8Z"/></svg>
+      </a>
+    </div>
+    <div class="footer__fine">
+      <p>Echo OS is an independent Arch-based project in preview. Aira is planned, not shipped. No license file is published yet &mdash; source is viewable, redistribution waits for a license.</p>
+      <p>Arch Linux, XFCE, KDE, Calamares, and GitHub are projects or trademarks of their respective owners. Echo OS is not affiliated with them.</p>
+    </div>
+  </footer>
+
+  <dialog class="comp-dialog" data-comp-dialog aria-labelledby="comp-dialog-title">
+    <div class="comp-dialog__head">
+      <h3 class="comp-dialog__title" id="comp-dialog-title" translate="no"></h3>
+      <button class="comp-dialog__close" type="button" data-comp-close aria-label="Close details">
+        <svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg>
+      </button>
+    </div>
+    <p class="comp-dialog__status"></p>
+    <p class="comp-dialog__desc"></p>
+    <ul class="comp-dialog__facts"></ul>
+    <a class="comp-dialog__link text-link" rel="noopener" target="_blank">Open in the repository <svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></a>
+  </dialog>
+
+  <div class="toast" role="status" aria-live="polite" data-toast></div>
+</body>
+</html>

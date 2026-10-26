@@ -1,0 +1,18 @@
+{
+  "name": "Echo OS — Preview",
+  "short_name": "Echo OS",
+  "description": "An Arch-based operating system with modular Boot, Core, and Install layers. Aira, the AI layer, is in development.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#05080c",
+  "theme_color": "#05080c",
+  "icons": [
+    {
+      "src": "assets/img/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

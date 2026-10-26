@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse">
+      <path d="M36 0H0V36" fill="none" stroke="#d2d9d4" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <!-- canvas -->
+  <rect width="1200" height="630" fill="#e9edec"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <!-- mono meta row -->
+  <text x="64" y="96" fill="#58635b" font-family="Noto Sans Mono, ui-monospace, monospace" font-size="16" letter-spacing="1">preview 2026.10 / plug and play</text>
+  <text x="1136" y="96" text-anchor="end" fill="#58635b" font-family="Noto Sans Mono, ui-monospace, monospace" font-size="16" letter-spacing="1">ai on os / built in the open</text>
+
+  <!-- rule -->
+  <rect x="0" y="120" width="1200" height="1" fill="#d2d9d4"/>
+
+  <!-- wordmark -->
+  <text x="56" y="298" fill="#0a0d0b" font-family="Noto Sans, sans-serif" font-size="170" font-weight="700" letter-spacing="-9">echo</text>
+  <g transform="translate(470 236)">
+    <circle r="31" fill="none" stroke="#08872b" stroke-width="9"/>
+    <circle r="16" fill="none" stroke="#08872b" stroke-width="9"/>
+  </g>
+  <text x="556" y="298" fill="#0a0d0b" font-family="Noto Sans, sans-serif" font-size="170" font-weight="700" letter-spacing="-9">os</text>
+
+  <!-- statement + status -->
+  <text x="62" y="404" fill="#58635b" font-family="Noto Sans, sans-serif" font-size="30" letter-spacing="-0.3">Plug and play: boot the live USB, install offline in minutes.</text>
+  <text x="62" y="446" fill="#58635b" font-family="Noto Sans Mono, ui-monospace, monospace" font-size="17" letter-spacing="0.5">echo.boot() / echo.core() / echo.install()</text>
+  <text x="62" y="492" fill="#0a0d0b" font-family="Noto Sans Mono, ui-monospace, monospace" font-size="17" letter-spacing="0.5">ai on os: aira is in development — not in this build</text>
+
+  <!-- cta bar -->
+  <rect x="62" y="522" width="470" height="62" rx="6" fill="#08872b"/>
+  <text x="88" y="561" fill="#ffffff" font-family="Noto Sans, sans-serif" font-size="21" font-weight="600">Download the preview ISO · Free</text>
+
+  <!-- side facts -->
+  <text x="1136" y="561" text-anchor="end" fill="#58635b" font-family="Noto Sans Mono, ui-monospace, monospace" font-size="14" letter-spacing="1.5">GITHUB.COM/HOMIETAL/ECHOOS-DEV</text>
+
+  <!-- outer rule -->
+  <rect x="0" y="629" width="1200" height="1" fill="#d2d9d4"/>
+</svg>
