@@ -16,6 +16,10 @@ The previous dark "signal" design is preserved in
 The site lives outside the `EchoOS-DEV` distribution source tree. It does not
 build, modify, or redistribute the OS image.
 
+**Live:** <https://homietal.github.io/echoos-website/> — deployed from
+[`HomieTal/echoos-website`](https://github.com/HomieTal/echoos-website)
+(GitHub Pages, `main` branch, repo root). Every push to `main` redeploys.
+
 ---
 
 ## Run locally
@@ -183,12 +187,12 @@ capture and are not used anywhere.
 
 ## Deployment notes
 
-1. Upload the directory contents as-is.
-2. Update the `og:image` URL to an absolute production URL after the domain is
-   chosen. The current value is relative (`assets/img/og.png`) and works for
-   local previews, but some social crawlers require an absolute URL.
+1. Upload the directory contents as-is (or push to `main`; Pages rebuilds).
+2. If the domain changes, update the absolute `og:url`, `og:image`, and
+   `twitter:image` URLs in `index.html` and `get-started.html`. They currently
+   point at the GitHub Pages URL.
 3. Confirm the host serves `.webp` as `image/webp`, `.woff2` as `font/woff2`,
-   and `.svg` as `image/svg+xml`.
+   and `.svg` as `image/svg+xml` (GitHub Pages already does).
 4. Set long cache lifetimes for `/assets/fonts/*`, `/assets/img/*`, and
    `/assets/css/*`; keep `index.html` short-lived while the preview changes.
 5. The download button points to GitHub Releases. The site does not mirror the
