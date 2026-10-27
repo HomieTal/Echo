@@ -423,6 +423,26 @@ body { padding-top: calc(var(--cd-h) + var(--nav-h)); }
   letter-spacing: -0.02em;
 }
 .hero__fn { color: var(--accent); font-size: 0.5em; vertical-align: super; text-decoration: none; }
+.hero__framework {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  margin-top: clamp(14px, 1.8vw, 24px);
+  padding: 0.55em 0.9em;
+  border: 1px solid var(--border);
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: clamp(0.78rem, 0.6rem + 0.5vw, 0.95rem);
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  background: #ffffff;
+}
+.hero__framework__sq {
+  width: 0.72em;
+  height: 0.72em;
+  flex: none;
+  background: #019099;
+}
+
 .hero__pitch {
   max-width: 56ch;
   font-size: clamp(1.125rem, 1rem + 0.6vw, 1.375rem);
