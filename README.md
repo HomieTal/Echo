@@ -16,8 +16,8 @@ The previous dark "signal" design is preserved in
 The site lives outside the `EchoOS-DEV` distribution source tree. It does not
 build, modify, or redistribute the OS image.
 
-**Live:** <https://homietal.github.io/echoos-website/> — deployed from
-[`HomieTal/echoos-website`](https://github.com/HomieTal/echoos-website)
+**Live:** <https://homietal.github.io/Echo/> — deployed from
+[`HomieTal/Echo`](https://github.com/HomieTal/Echo)
 (GitHub Pages, `main` branch, repo root). Every push to `main` redeploys.
 
 ---
