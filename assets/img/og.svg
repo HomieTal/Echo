@@ -10,7 +10,7 @@
   <rect width="1200" height="630" fill="url(#grid)"/>
 
   <!-- mono meta row -->
-  <text x="64" y="96" fill="#58635b" font-family="Noto Sans Mono, ui-monospace, monospace" font-size="16" letter-spacing="1">preview 2026.10 / plug and play</text>
+  <text x="64" y="96" fill="#58635b" font-family="Noto Sans Mono, ui-monospace, monospace" font-size="16" letter-spacing="1">preview 2026.10 / plug and play / plug and work</text>
   <text x="1136" y="96" text-anchor="end" fill="#58635b" font-family="Noto Sans Mono, ui-monospace, monospace" font-size="16" letter-spacing="1">ai on os / built in the open</text>
 
   <!-- rule -->
@@ -30,7 +30,7 @@
 
   <!-- statement + status -->
   <text x="62" y="404" fill="#58635b" font-family="Noto Sans, sans-serif" font-size="30" letter-spacing="-0.3">Plug and play: boot the live USB, install offline in minutes.</text>
-  <text x="62" y="446" fill="#58635b" font-family="Noto Sans Mono, ui-monospace, monospace" font-size="17" letter-spacing="0.5">echo.boot() / echo.core() / echo.install()</text>
+  <text x="62" y="446" fill="#58635b" font-family="Noto Sans Mono, ui-monospace, monospace" font-size="17" letter-spacing="0.5">echo.boot() / echo.core() / echo.install() / bring your own</text>
   <text x="62" y="492" fill="#0a0d0b" font-family="Noto Sans Mono, ui-monospace, monospace" font-size="17" letter-spacing="0.5">ai on os: aira is in development — not in this build</text>
 
   <!-- cta bar -->
