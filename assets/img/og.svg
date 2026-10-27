@@ -10,7 +10,7 @@
   <rect width="1200" height="630" fill="url(#grid)"/>
 
   <!-- mono meta row -->
-  <text x="64" y="96" fill="#58635b" font-family="Noto Sans Mono, ui-monospace, monospace" font-size="16" letter-spacing="1">preview 2026.10 / plug and play / plug and work</text>
+  <text x="64" y="96" fill="#58635b" font-family="Noto Sans Mono, ui-monospace, monospace" font-size="16" letter-spacing="1">preview 2026.10 / plug and play / plug-in OS manufacturing framework</text>
   <text x="1136" y="96" text-anchor="end" fill="#58635b" font-family="Noto Sans Mono, ui-monospace, monospace" font-size="16" letter-spacing="1">ai on os / built in the open</text>
 
   <!-- rule -->
