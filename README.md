@@ -61,6 +61,8 @@ echoos-website/
 │   │   └── contributors/       # GitHub avatars (downloaded, self-hosted)
 │   └── screenshots/            # genuine VM captures (boot menu, LightDM login)
 ├── downloads/SHA256SUMS        # checksum reference for the public release
+├── downloads/latest-release.json  # auto-synced release data (see below)
+├── .github/workflows/sync-release.yml  # daily sync job (see below)
 ├── site.webmanifest
 ├── robots.txt
 └── README.md
@@ -113,20 +115,56 @@ build in `EchoOS-DEV/out/`.
 
 | Field | Value |
 | --- | --- |
-| Release | `v2026.10.24` — EchoOS 2026.10.24 x86_64 Live/Install ISO |
-| Published | 2026-10-24 |
-| File | `archlinux-2026.10.24-x86_64.iso` |
-| Size | 1,829,044,224 bytes (1.70 GiB) |
-| SHA-256 | `388f7a45ec91da248144313e94822142331a43dd429329be70829f5ef9c47d85` |
-| Source | <https://github.com/HomieTal/EchoOS-DEV/releases/tag/v2026.10.24> |
+| Release | `v3.0.0` — EchoOS Fox v3.0.0 — 3rd Release (KDE Plasma 6 + SDDM) |
+| Published | 2026-10-30 |
+| File | `echoos-fox-2026.10.29-x86_64.iso` — split into two 2 GB parts (`part-00` + `part-01`); rejoin with `cat .part-* > iso` |
+| Size | 2,469,281,792 bytes joined (2.30 GiB) |
+| SHA-256 | `d53967698415d09fa33d3c3b43c6bf790b7738253b5dfeff9127d66d364adec7` |
+| Source | <https://github.com/HomieTal/EchoOS-DEV/releases/tag/v3.0.0> |
 
-The checksum is published in the release notes and matches the GitHub asset
-digest. `downloads/SHA256SUMS` is a local convenience copy; the ISO itself is not
+The checksum is published in the release and ships as the SHA256SUMS release
+asset. `downloads/SHA256SUMS` is a local convenience copy; the ISO itself is not
 stored in this website directory.
 
-Do not point the download button at `out/echoos-fox-2026.10.25-x86_64.iso`.
-That build is newer, but it is not the public release and has a different
-checksum (`fe192814...`).
+Do not point the download button at `out/echoos-fox-2026.10.30-x86_64.iso`.
+That build is newer (the drafted v3.0.1 installer bootloader fix), but it is
+not published and the draft release has no ISO assets attached yet.
+
+---
+
+## Automatic release sync
+
+The site no longer needs a manual pass when EchoOS-DEV publishes a new release.
+
+**How it works**
+
+1. `.github/workflows/sync-release.yml` runs daily (and on demand via
+   *Run workflow*) and calls the GitHub API for the latest **published**
+   release of `HomieTal/EchoOS-DEV` (drafts and prereleases are ignored).
+2. It extracts the tag, name, publish date, ISO filename, part count, total
+   size, and the joined-ISO checksum taken from the release's own
+   `SHA256SUMS` asset, and writes `downloads/latest-release.json` plus the
+   `downloads/SHA256SUMS` convenience copy. If nothing changed, it exits
+   without a commit.
+3. On page load, `assets/js/main.js` fetches `downloads/latest-release.json`
+   (same-origin, so the no-external-requests design and the CSP stand) and
+   updates every element marked with a `data-release-*` attribute:
+   download links, tag, date, size, ISO filename, rejoin command, and the
+   checksum. The hardcoded markup is the fallback, so the page stays correct
+   with JavaScript off or the fetch failing.
+
+**Limits to know**
+
+- The workflow trusts the release's own SHA256SUMS asset; it does not download
+  and re-hash the multi-GB ISO. Independent verification happens on the
+  user's machine (`sha256sum -c SHA256SUMS` after rejoining) — which is the
+  site's whole trust model anyway.
+- The workflow only refreshes *numbers and links*. Prose that describes what
+  the release contains (Plasma vs XFCE, feature claims, roadmap) still needs
+  a human update when the feature set changes.
+- The `cat … .part-*` sentence structure assumes a split release; if a future
+  release returns to single-file assets, the static sentence should be
+  adjusted manually (links and checksum still update automatically).
 
 ---
 
@@ -136,23 +174,25 @@ The marketing is deliberately tied to what the current preview actually does.
 
 | Claim on the page | Status | Evidence |
 | --- | --- | --- |
-| Plug-and-play: live USB boots on any x86_64 machine | Shipped in preview (phrase says "any" — verified on BIOS VMware; other hardware inherited from Arch) | Release notes, archiso bootmodes |
-| Install offline in minutes | Shipped (~4 min verified once in VMware, BIOS) | Release notes |
+| Plug-and-play: live USB boots on any x86_64 machine | Shipped in preview (phrase says "any" — BIOS VMware verified on earlier previews; other hardware inherited from Arch) | Release notes, archiso bootmodes |
+| Install offline in minutes | Offline install shipped; the earlier ISO installed in ~4 min in one VMware (BIOS) run | Release notes |
 | Arch-based OS | Shipped in preview | ArchISO profile, pkglist, build report |
-| BIOS + UEFI live boot | Shipped in preview | Release notes, archiso bootmodes |
-| XFCE live session with autologin | Shipped in preview | Release notes, architecture report |
-| Calamares 3.4.2 installer | Shipped in preview | Release notes, architecture report |
-| Offline full-disk install | Shipped in preview | Release notes verified in VMware |
-| ~4 minute install | Verified once in VMware Workstation 26 (BIOS) | Release notes |
-| Echo Boot / Core / Install components | Populated, modular assembly in progress | Component READMEs, docs |
+| BIOS + UEFI live boot | Shipped (BIOS syslinux + UEFI rEFInd in v3.0.0; BIOS install boot fixed in v3.0.0) | Release notes |
+| KDE Plasma 6 live session with SDDM autologin | Shipped in v3.0.0 | Release notes, EchoOS SDDM config, branding assets |
+| Calamares offline installer with EchoOS branding | Shipped in v3.0.0 (branding + Calamares rework) | Release notes |
+| Offline full-disk install | Shipped in preview (verified in VMware on earlier previews) | Release notes |
+| ~4 minute install | Verified once in VMware Workstation 26 (BIOS) on the 2026.10.24 preview; not re-verified on v3.0.0 | Release notes |
+| Echo Boot / Core / Install / Desktop components | Populated (echo-desktop added in v3.0.0), modular assembly in progress | Component READMEs, docs |
 | AI on OS (Aira as the headline vision) | Positioning only — Aira is planned, not shipped | Every mention keeps "in development / planned" |
-| KDE Plasma | Planned, not shipped | Architecture report target; current ISO is XFCE |
 | Aira AI layer | Planned, not shipped | No implementation or integration point in repo |
 | "World's first AI-native OS" | Ambition, not a shipped capability | Kept out of the hero; status carried by receipts/roadmap |
 
 **Do not remove the Aira footnote or the roadmap status without changing the
-claims.** The preview contains no AI features. The current desktop is XFCE, not
-KDE Plasma. XFCE and Calamares still use stock branding in places.
+claims.** The preview contains no AI features.
+
+**Screenshots lag the release:** the on-page captures are still from the
+XFCE/LightDM 2026.10.24 preview and are captioned as such. Do not caption them
+as Plasma until genuine v3.0.0 captures replace them.
 
 The footer states that **no license file is currently published** in the EchoOS
 repository. Do not replace this with GPL/MIT wording unless the project actually
@@ -167,16 +207,18 @@ Genuine captures from the user's VM testing are now in use:
 - `assets/screenshots/boot-menu.png` — Echo OS boot menu (stock Arch ISO menu) in
   VMware; used in the boot river tile and the proof boot slot. Stock branding is
   visible and honestly captioned.
-- `assets/screenshots/live-login.png` — LightDM live-user login; used in the core
-  river tile and the proof live-session slot.
+- `assets/screenshots/live-login.png` — LightDM live-user login from the
+  XFCE-era 2026.10.24 preview; used in the core river tile and the proof
+  live-session slot. Captioned as an earlier preview.
 - The installer slot remains a labeled placeholder until a successful install is
   captured (an earlier capture shows a failed Calamares run and is deliberately
   not used).
 
-A desktop capture showing KDE Plasma with an EchoOS hostname also exists
-(`~/Desktop/mahi/desktop.jpg`) but is **held back**: the published release
-(v2026.10.24) ships XFCE and the site labels Plasma "planned". If the project
-publishes a Plasma-based release, update the claims table and add this capture.
+v3.0.0 ships KDE Plasma 6 + SDDM, so **genuine Plasma captures are still
+pending**. The desktop images under `~/Desktop/echo_assest/` were checked and
+are **not EchoOS** (one is a PhreshOS desktop, the other a Winves mockup) — do
+not use them. Capture fresh screenshots from the public v3.0.0 ISO, then update
+the captions and claims table.
 
 The reserved slots auto-detect: drop a file at the `src` used by a
 `figure[data-shot]` and it replaces the labeled fallback. The old
@@ -250,9 +292,9 @@ without nonces.
 
 ## Maintenance checklist
 
-- [ ] Public release still `v2026.10.24`? Update version, size, checksum, and link.
+- [x] Public release data is auto-synced (see _Automatic release sync_); check the workflow run if it stalls.
 - [ ] Aira still not shipped? Keep the footnote and "planned" chips.
-- [ ] Desktop still XFCE? Keep KDE labelled planned until the ISO changes.
+- [x] Desktop is KDE Plasma 6 as of v3.0.0 — claims, roadmap, and step copy updated; keep Aira labelled planned.
 - [ ] License still unpublished? Keep the footer wording accurate.
 - [ ] Add genuine screenshots when captured from the public ISO.
 - [ ] Re-check the three GitHub docs/component links.
